@@ -31,10 +31,12 @@ packages = [
 
 NAME = 'vertest'
 
+# setup_args["version"] = "1.0.0"
 
-setup(
+setup_args = dict(
+
     name=NAME,
-    version=get_version(),
+    version="1.0.0",
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     author='Klaudiusz Staniek',
@@ -54,3 +56,10 @@ setup(
     classifiers=CLASSIFIERS,
     zip_safe=False
 )
+
+
+if __name__=="__main__":
+          if 'upload' in sys.argv:
+              import package
+              package.__version__.verify(setup_args['version'])
+          setup(**setup_args)
